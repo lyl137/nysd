@@ -7,26 +7,29 @@ import router from './router'
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 import store from '@/store';
-import axios from 'axios'
+import axios from 'axios';
+// import Chat from 'vue-beautiful-chat'
 
 
 // 配置
 Vue.use(ElementUI)
+// Vue.use(Chat)
 Vue.config.productionTip = false
 
-// 配置 axios
-Vue.prototype.$http = axios  // 修改内部的$http 为 axios
-axios.defaults.baseURL="http://localhost:8086/wanshu"
+// // 配置 axios
+// Vue.prototype.$http = axios  // 修改内部的$http 为 axios
+// axios.defaults.baseURL = "http://localhost:8086/wanshu"
+
 // 添加 Axios 的拦截器
-axios.interceptors.request.use(config =>{
+axios.interceptors.request.use(config => {
   // 每次发送请求我们都携带token信息
   var token = sessionStorage.getItem('token')
-  config.headers['Authorization']=token // 请求头带上Token
+  config.headers['Authorization'] = token // 请求头带上Token
   return config;
-},error=>{
+}, error => {
   return Promise.reject(error);
 })
-/** 使用router钩子函数来处理 */
+// /** 使用router钩子函数来处理 */
 router.beforeEach((to, from, next) => {
   const username = sessionStorage.getItem('username')
   if (to.name !== 'login' && !username) next({ name: 'login' })

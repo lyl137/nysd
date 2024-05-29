@@ -12,7 +12,7 @@
        
           <el-main>
               <!-- 路由的出口 -->
-              <router-view></router-view>
+              <router-view id="secondRoute"></router-view>
           </el-main>
         
       </el-container>
@@ -43,4 +43,30 @@ export default {
   .el-header{
     padding: 0;
   }
+
+	/* #secondRoute:hover {
+        overflow-y: overlay;
+    } */
+    
+    #secondRoute {
+        padding-right: 0px;
+        padding-left: 0px;
+        height: 80vh;
+        width: 100%;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+
+
+::-webkit-scrollbar {
+  width: 3px;
+  height: 3px;
+}
+::-webkit-scrollbar-thumb { 
+background-color: #1890ff;
+}
+::-webkit-scrollbar-track { 
+  background: #ddd;
+}
+
 </style>
